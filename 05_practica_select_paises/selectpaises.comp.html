@@ -1,0 +1,34 @@
+<template>
+	<option></option>
+</template>
+<script>
+	//datos de países
+	var paises = ["Alemania", "Argentina", "Chile", "España", "Francia", "México"];
+	//cargo el template
+	var template = document.currentScript.ownerDocument.querySelector('template').content;
+    var option = template.querySelector('option');
+    var newPais = option;
+    paises.forEach(function(pais){
+    	console.log(pais);
+    	newPais.value = pais;
+    	newPais.textContent = pais;
+    	template.appendChild(newPais);
+    	newPais = newPais.cloneNode(true);
+    });
+
+	//prototipo de elemento, a partir del elemento Button
+	var prototipo = Object.create(HTMLSelectElement.prototype);
+
+    // manejador del evento createdCallback,
+    //ocurre cuando se instancia el componente
+    prototipo.createdCallback = function() {
+    	console.log('creado');
+        this.appendChild(template.cloneNode(true));
+    };
+
+    //Registro el componente "dw-botonholamundo"
+	document.registerElement('dw-selectpaises', {
+		prototype: prototipo,
+		extends: 'select'
+	});
+</script>

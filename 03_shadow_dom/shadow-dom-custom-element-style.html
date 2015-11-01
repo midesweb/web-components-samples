@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Primer Custom Element</title>
+	<style>
+	h2{
+		background-color: #ddd;
+	}
+	h2::shadow{
+		background-color: #ffd;
+	}
+	#elem::shadow h2{
+		background-color: #ccf;
+	}
+	</style>
+</head>
+<body>
+	<h1>Hola Mundo Web Components - Custom Element</h1>
+	<h2>Esto es un titular H2</h2>
+	<!-- Cargo mi Web Component -->
+	<dw-holamundo id="elem"></dw-holamundo>
+
+	<script>
+	//prototipo de elemento, a partir del elemento base
+	var prototipo = Object.create(HTMLElement.prototype);
+
+    // manejador del evento createdCallback,
+    //ocurre cuando se instancia el componente
+    prototipo.createdCallback = function() {
+        var shadowDOM = this.createShadowRoot();
+		shadowDOM.innerHTML = '<style>h2{ color: #f80}</style>' + 
+                 '<h2>Titular H2 en Shadow DOM</h2>';
+    };
+
+    //Registro el componente "dw-holamundo"
+	document.registerElement('dw-holamundo', {
+		prototype: prototipo
+	});
+	</script>
+</body>
+</html>

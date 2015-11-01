@@ -1,0 +1,28 @@
+<template id="tpl">
+    <style>
+    h1{
+        font-size: 12pt;
+        font-family: sans-serif;
+    }
+    </style>
+    <h1>Viva DesarrolloWeb.com!!</h1>
+</template>
+<script>
+    var template = document.currentScript.ownerDocument.querySelector('#tpl').content;
+    var clone = document.importNode(template, true);
+
+	//prototipo de elemento, a partir del elemento base
+	var prototipo = Object.create(HTMLElement.prototype);
+
+    // manejador del evento createdCallback,
+    //ocurre cuando se instancia el componente
+    prototipo.createdCallback = function() {
+        var shadowDOM = this.createShadowRoot();
+        shadowDOM.appendChild(clone);
+    };
+
+    //Registro el componente "dw-viva"
+	document.registerElement('dw-viva', {
+		prototype: prototipo
+	});
+</script>

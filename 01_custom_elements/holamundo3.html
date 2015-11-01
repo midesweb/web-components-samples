@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Custom Element que extiende otro elemento</title>
+</head>
+<body>
+	<h1>Hola Mundo Web Components - Custom Element extendido</h1>
+	<p>El botón no tiene ningún texto en el HTML, el que aparece se lo colocamos mediante Javascript al instanciarse el webcomponent</p>
+
+	<!-- Cargo mi Web Component -->
+	<button is="dw-botonholamundo"></button>
+
+	<script>
+	//prototipo de elemento, a partir del elemento Button
+	var prototipo = Object.create(HTMLButtonElement.prototype);
+
+    // manejador del evento createdCallback,
+    //ocurre cuando se instancia el componente
+    prototipo.createdCallback = function() {
+    	console.log('creado');
+        this.textContent = "Hola Mundo!";
+    };
+
+    //Registro el componente "dw-botonholamundo"
+	document.registerElement('dw-botonholamundo', {
+		prototype: prototipo,
+		extends: 'button'
+	});
+	</script>
+</body>
+</html>

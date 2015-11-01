@@ -1,0 +1,25 @@
+{
+  "name": "Ejercicios Web Components",
+  "authors": [
+    "Miguel Angel Alvarez <malvarez@desarrolloweb.com>"
+  ],
+  "description": "Realizando ejercicios básicos con Web Components usando Javascript \"nativo\" (VanillaJS)",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "web",
+    "components"
+  ],
+  "license": "MIT",
+  "homepage": "http://www.desarrolloweb.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "webcomponentsjs": "~0.7.15"
+  }
+}

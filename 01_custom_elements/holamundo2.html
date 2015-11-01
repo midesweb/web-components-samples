@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Primer Custom Element</title>
+</head>
+<body>
+	<h1>Hola Mundo Web Components - Custom Element</h1>
+	
+	<!-- Cargo mi Web Component -->
+	<dw-holamundo></dw-holamundo>
+
+	<script>
+	//prototipo de elemento, a partir del elemento base
+	var prototipo = Object.create(HTMLElement.prototype);
+
+    // manejador del evento createdCallback,
+    //ocurre cuando se instancia el componente
+    prototipo.createdCallback = function() {
+        console.log("Creado");
+        //cambio el texto que hay en este elemento
+        this.textContent = "Hola Mundo!";
+    };
+
+    //Registro el componente "dw-holamundo"
+	document.registerElement('dw-holamundo', {
+		prototype: prototipo
+	});
+	</script>
+</body>
+</html>

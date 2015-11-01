@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Elemento con Shadow DOM</title>
+</head>
+<body>
+	<h1>Shadow DOM en un Custom Element</h1>
+	<h2>Esto es un titular H2</h2>
+	<!-- Cargo mi Web Component -->
+	<dw-hishadow></dw-hishadow>
+
+	<script>
+	//prototipo de elemento, a partir del elemento base
+	var prototipo = Object.create(HTMLElement.prototype);
+
+    // manejador del evento createdCallback,
+    //ocurre cuando se instancia el componente
+    prototipo.createdCallback = function() {
+        var shadowDOM = this.createShadowRoot();
+		shadowDOM.innerHTML = '<h2>Titular H2 en Shadow DOM</h2>';
+    };
+
+    //Registro el componente "dw-hishadow"
+	document.registerElement('dw-hishadow', {
+		prototype: prototipo
+	});
+	</script>
+</body>
+</html>
