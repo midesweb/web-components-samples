@@ -5,7 +5,7 @@
 	//datos de países
 	var paises = ["Alemania", "Argentina", "Chile", "España", "Francia", "México"];
 	//cargo el template
-	var template = document.currentScript.ownerDocument.querySelector('template').content;
+	var template = document._currentScript.ownerDocument.querySelector('template').content;
     var option = template.querySelector('option');
     var newPais = option;
     paises.forEach(function(pais){
