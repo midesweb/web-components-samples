@@ -11,8 +11,8 @@
 	<dw-holamundo></dw-holamundo>
 
 	<script>
-	//prototipo de elemento, a partir del elemento base
-	var prototipo = Object.create(HTMLElement.prototype);
+    //prototipo de elemento, a partir del elemento base
+    var prototipo = Object.create(HTMLElement.prototype);
 
     // manejador del evento createdCallback,
     //ocurre cuando se instancia el componente
@@ -23,9 +23,9 @@
     };
 
     //Registro el componente "dw-holamundo"
-	document.registerElement('dw-holamundo', {
-		prototype: prototipo
-	});
+    document.registerElement('dw-holamundo', {
+        prototype: prototipo
+    });
 	</script>
 </body>
 </html>
