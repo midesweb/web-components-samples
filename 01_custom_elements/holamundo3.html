@@ -15,18 +15,18 @@
 	//prototipo de elemento, a partir del elemento Button
 	var prototipo = Object.create(HTMLButtonElement.prototype);
 
-    // manejador del evento createdCallback,
-    //ocurre cuando se instancia el componente
-    prototipo.createdCallback = function() {
-    	console.log('creado');
-        this.textContent = "Hola Mundo!";
-    };
+	// manejador del evento createdCallback,
+	//ocurre cuando se instancia el componente
+	prototipo.createdCallback = function() {
+		console.log('creado');
+		this.textContent = "Hola Mundo!";
+	};
 
-    //Registro el componente "dw-botonholamundo"
+	//Registro el componente "dw-botonholamundo"
 	document.registerElement('dw-botonholamundo', {
 		prototype: prototipo,
 		extends: 'button'
-	});
+});
 	</script>
 </body>
 </html>
