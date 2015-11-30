@@ -7,11 +7,11 @@
 <body>
 	<h1>Template simple</h1>
 
-	<template>
+	<template id="mitemplate">
 		<p>Esto es un template!!</p>
 	</template>
 	<script>
-		var template = document.querySelector('template').content;
+		var template = document.getElementById('template').content;
 		var clone = template.cloneNode(true);
 		document.body.appendChild(clone);
 	</script>

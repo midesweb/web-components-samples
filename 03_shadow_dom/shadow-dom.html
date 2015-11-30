@@ -3,6 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Shadow DOM</title>
+	<script src="../bower_components/webcomponentsjs/webcomponents.js"></script>
+	<style>
+		/* Este estilo no afectará al párrafo que colocaremos en el shadow dom */
+		p{
+			color: red;
+		}
+	</style>
 </head>
 <body>
 	<div id="elem"></div>
@@ -11,7 +18,7 @@
 	//un elemento de la página
 	var elem = document.querySelector("#elem");
 
-	//convertimos ese elemento en un "shadow root"
+	//Añadimos a ese elemento un "shadow root"
 	var shadow = elem.createShadowRoot();
 
 	//cambiamos el contenido de ese elemento, esto será creado como "shadow DOM"
