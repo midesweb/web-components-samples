@@ -10,36 +10,37 @@
 </template>
 <script>
     var prototipo = Object.create(HTMLElement.prototype);
-    
+
     //Accedo al template
     var templateContent = document._currentScript.ownerDocument.querySelector('template').content;
-    
+
     prototipo.createdCallback = function() {
-        
+
         // guardo el contenido del elemento y luego lo borro
         var elementContent = this.innerHTML;
         this.innerHTML = "";
-        
+
         // clono el template
         var clone = document.importNode(templateContent, true);
-        
+
         // accedo al párrago de ese clon del template
         var parrafo = clone.querySelector("p");
-        
+
         // cambio el contenido de ese párrafo con el contenido del elemento
         parrafo.innerHTML = elementContent;
-        
+
         // si tiene el atributo color, lo coloco como estilo del párrafo
         if(this.hasAttribute("color")){
             var color = this.getAttribute('color');
             parrafo.style.color = color;
         }
-        
-        // Añado el clon del template como shadow dom 
+
+        // Añado el clon del template como shadow dom
         this.createShadowRoot().appendChild(clone);
+
     };
 
-    //Registro el componente "dw-holamundo"
+    //Registro el componente "feedback-message"
     document.registerElement('feedback-message', {
         prototype: prototipo
     });
