@@ -1,0 +1,33 @@
+<template>
+    <style>
+        p{
+            background-color: azure;
+            font-family: trebuchet ms, tahoma, verdana, arial, sans-serif;
+            padding: 10px;
+        }
+    </style>
+    <p></p>
+</template>
+<script>
+    var prototipo = Object.create(HTMLElement.prototype);
+    
+    //Accedo al template
+    var templateContent = document._currentScript.ownerDocument.querySelector('template').content;
+    
+    prototipo.createdCallback = function() {
+        var clone = document.importNode(templateContent, true);
+        var elementContent = this.innerHTML;
+        this.innerHTML = "";
+        clone.querySelector("p").innerHTML = elementContent;
+        if(this.hasAttribute("color")){
+            var color = this.getAttribute('color');
+            clone.querySelector("p").style.color = color;
+        }
+        this.createShadowRoot().appendChild(clone);
+    };
+
+    //Registro el componente "dw-holamundo"
+    document.registerElement('feedback-message', {
+        prototype: prototipo
+    });
+</script>
