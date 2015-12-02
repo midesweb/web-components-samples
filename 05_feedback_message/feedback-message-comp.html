@@ -15,14 +15,27 @@
     var templateContent = document._currentScript.ownerDocument.querySelector('template').content;
     
     prototipo.createdCallback = function() {
-        var clone = document.importNode(templateContent, true);
+        
+        // guardo el contenido del elemento y luego lo borro
         var elementContent = this.innerHTML;
         this.innerHTML = "";
-        clone.querySelector("p").innerHTML = elementContent;
+        
+        // clono el template
+        var clone = document.importNode(templateContent, true);
+        
+        // accedo al párrago de ese clon del template
+        var parrafo = clone.querySelector("p");
+        
+        // cambio el contenido de ese párrafo con el contenido del elemento
+        parrafo.innerHTML = elementContent;
+        
+        // si tiene el atributo color, lo coloco como estilo del párrafo
         if(this.hasAttribute("color")){
             var color = this.getAttribute('color');
-            clone.querySelector("p").style.color = color;
+            parrafo.style.color = color;
         }
+        
+        // Añado el clon del template como shadow dom 
         this.createShadowRoot().appendChild(clone);
     };
 
