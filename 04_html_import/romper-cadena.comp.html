@@ -1,0 +1,31 @@
+<script>
+(function() {
+  function recortar(cadena, len) {
+    if (cadena.length <= len) {
+      return cadena;
+    }
+    var recortada = cadena.substr(0, len);
+    return recortada.substr(0, Math.min(recortada.length, recortada.lastIndexOf(' '))) + '...';
+  }
+
+  //prototipo de elemento, a partir del elemento base
+  var prototipo = Object.create(HTMLElement.prototype);
+
+  //cuando se cree el elemento
+  prototipo.createdCallback = function() {
+    // guardo el contenido del elemento
+    var cadena = this.textContent;
+    //guardo la longitudo deseada
+    var len = this.getAttribute('len');
+    //lo recorto
+    cadena = recortar(cadena, len);
+    //cambio el texto que hay en este elemento
+    this.textContent = cadena;
+  };
+
+  //Registro el componente "dw-date"
+  document.registerElement('romper-cadena', {
+    prototype: prototipo
+  });
+})();
+</script>

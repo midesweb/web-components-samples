@@ -1,16 +1,16 @@
-<script>
- //prototipo de elemento, a partir del elemento base
- var prototipo = Object.create(HTMLElement.prototype);
+  <script>
+  //prototipo de elemento, a partir del elemento base
+  var prototipo = Object.create(HTMLElement.prototype);
 
-    // manejador del evento createdCallback,
-    //ocurre cuando se instancia el componente
-    prototipo.createdCallback = function() {
-        //cambio el texto que hay en este elemento
-        this.textContent = new Date().toString();
-    };
+  // manejador del evento createdCallback,
+  //ocurre cuando se instancia el componente
+  prototipo.createdCallback = function() {
+    //cambio el texto que hay en este elemento
+    this.textContent = new Date().toString();
+  };
 
-    //Registro el componente "dw-date"
- document.registerElement('dw-date', {
-  prototype: prototipo
- });
+  //Registro el componente "dw-date"
+  document.registerElement('dw-date', {
+    prototype: prototipo
+  });
 </script>
